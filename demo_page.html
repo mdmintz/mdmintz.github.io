@@ -1,9 +1,17 @@
-<html>
+<html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=0.5">
-        <link rel="shortcut icon" href="img/logo3a.png">
         <title>Web Testing Page</title>
+        <meta property="og:site_name" content="Demo Page">
+        <meta property="og:title" content="Web Testing Page">
+        <meta name="Description" content="Test your automation framework here.">
+        <meta property="og:description" content="Test your automation framework here.">
+        <meta name="Keywords" content="Python, pytest, selenium, webdriver, test automation, testing, seleniumbase, test framework, HTML, JavaScript">
+        <meta property="og:keywords" content="Python, pytest, selenium, webdriver, test automation, testing, seleniumbase, test framework, HTML, JavaScript">
+        <meta property="og:image" content="https://seleniumbase.io/cdn/img/sb_demo_page.png">
+        <meta http-equiv="Content-Type" content="text/html, charset=utf-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=0.41, shrink-to-fit=no">
+        <meta content="follow,index" name="robots">
         <style>
             html {
                 background-color: #9988ad;
@@ -82,7 +90,7 @@
                 margin: 2px;
             }
             h1 {
-                font-size: 25px;
+                font-size: 24px;
                 color:#0066AA;
             }
             h2 {
@@ -248,11 +256,30 @@
                 background: #4CAF50;
                 cursor: pointer;
             }
+            #drop1,#drop2 {
+                width: 131px;
+                height: 21px;
+                padding: 1px;
+                border: 1.5px solid #aaaaaa;
+                background-color: #d6e6f0;
+            }
+            img:active {
+                box-shadow: 0px 2px 5px 1px rgba(105, 165, 155, 0.3),
+                1px 2px 12px 0px rgba(105, 165, 155, 0.2) !important;
+            }
         </style>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P5KFWRNLRN"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-P5KFWRNLRN', { cookie_flags: 'SameSite=None;Secure' });
+        </script>
     </head>
     <body>
+        <!-- Tested with SeleniumBase - https://seleniumbase.io -->
         <form id="myForm">
-            <table id="myTable" style="width: 780px; padding: 10px;">
+            <table id="myTable" style="width: 804px; padding: 10px;">
                 <tbody id="tbodyId">
                     <tr>
                         <td>
@@ -335,6 +362,7 @@
                             <input type="range" min="0" max="100" step="10"
                                    id="mySlider" name="sliderName" value="50"
                                    style="width: 88%;" class="slider"
+                                   oninput="sliderFunction1()"
                                    onclick="sliderFunction1()"
                                    onchange="sliderFunction1()"
                                    onmousemove="sliderFunction1()"/>
@@ -380,7 +408,8 @@
                         <td style="width: 150px;">
                             CheckBox:
                             <input type="checkbox" id="checkBox1"
-                                   name="checkBoxName1" class="checkBoxClassA"/>
+                                   name="checkBoxName1" class="checkBoxClassA"
+                                   onchange="revealRow(event)"/>
                         </td>
                         <td style="width: 180px;">
                             CheckBoxes:
@@ -407,6 +436,20 @@
                                 %20name=%22checkBoxName6%22
                                 %20class=%22checkBoxClassD%20fBox%22%20/>
                                 </body>"></iframe>
+                        </td>
+                    </tr>
+                    <tr style="display: none" class="hidden_row">
+                        <td>
+                            Drag and Drop A:
+                        </td>
+                        <td>
+                            <div id="drop1" class="dropzone" ondrop="drop(event)" ondragover="dragOver(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)"><img id="logo" src="https://seleniumbase.io/cdn/img/sb_logo_tiny.png" draggable="true" ondragstart="dragStart(event)" width="130" height="20"></div>
+                        </td>
+                        <td>
+                            Drag and Drop B:
+                        </td>
+                        <td>
+                            <div id="drop2" class="dropzone" ondrop="drop(event)" ondragover="dragOver(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)"></div>
                         </td>
                     </tr>
                     <tr>
@@ -443,7 +486,7 @@
 
                         <td>
                             <a id="myLink4" name="linkName4" class="linkClass"
-                               href="https://seleniumbase.io/demo_page.html">
+                               href="https://seleniumbase.io/demo_page/">
                                SeleniumBase Demo Page</a>
                         </td>
                     </tr>
@@ -549,6 +592,51 @@
                     element.beginElement();
                 });
             });
+        </script>
+        <script>
+            function revealRow(event) {
+                // Show the Drag & Drop row if the first checkbox is checked.
+                if (event.target.checked)
+                {
+                    document.querySelector('tr.hidden_row').style.display='';
+                }
+                else
+                {
+                    document.querySelector('tr.hidden_row').style.display='none';
+                }
+            }
+        </script>
+        <script>
+            function dragOver(event) {
+                // Allow dropping.
+                event.preventDefault();
+            }
+            function dragEnter(event) {
+                event.preventDefault();
+                if ( event.target.className === "dropzone" ) {
+                    event.target.style.background = "#c6b6d6";
+                }
+            }
+            function dragLeave(event) {
+                event.preventDefault();
+                if ( event.target.className === "dropzone" ) {
+                    event.target.style.background = "#d6e6f0";
+                }
+            }
+            function dragStart(event) {
+                event.dataTransfer.setData("id_of_dragged_element", event.target.id);
+            }
+            function drop(event) {
+                event.preventDefault();
+                var data = event.dataTransfer.getData("id_of_dragged_element");
+                try {
+                    event.target.appendChild(document.getElementById(data));
+                    event.target.style.background = "#d6e6f0";
+                }
+                catch (HierarchyRequestError) {
+                    // Drap & Drop to same location. Do nothing.
+                }
+            }
         </script>
     </body>
 </html>
