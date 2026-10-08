@@ -196,6 +196,13 @@ button {
   z-index: 2;
   width: min(1200px, 90vw);
   padding-top: 80px;
+  transform: translateY(-35px);
+}
+
+@media (max-width: 700px) {
+  .hero-content {
+    transform: translateY(-20px);
+  }
 }
 
 .eyebrow {
@@ -244,7 +251,8 @@ button {
   align-items: center;
   gap: 30px;
 
-  padding: 15px 18px;
+  margin-left: 100px;
+  padding: 15px 50px;
 
   border: 1px solid var(--line);
   background: rgba(255,255,255,.04);
