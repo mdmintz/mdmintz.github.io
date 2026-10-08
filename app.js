@@ -245,17 +245,16 @@ const examples = {
       "A simple browser automation flow: navigate to a page, enter credentials, submit a form and verify the result.",
 
     code:
-`from seleniumbase import SB
+`from seleniumbase import sb_cdp
 
-with SB() as sb:
-    sb.open("https://example.com/login")
+sb = sb_cdp.Chrome()
+sb.open("https://seleniumbase.io/simple/login")
 
-    sb.type("#username", "demo")
-    sb.type("#password", "secret")
+sb.type("#username", "demo_user")
+sb.type("#password", "secret_pass")
+sb.click('a:contains("Sign in")')
 
-    sb.click("button")
-
-    sb.assert_text("Welcome!")`,
+sb.assert_text("Welcome!")`,
 
     source:
       "https://github.com/seleniumbase/SeleniumBase"
@@ -506,11 +505,11 @@ async function runAutomation() {
 
 
   // Step 3
-  activateLine(4);
+  activateLine(3);
 
   await typeText(
     username,
-    "demo"
+    "demo_user"
   );
 
   await sleep(300);
@@ -521,7 +520,7 @@ async function runAutomation() {
 
   await typeText(
     password,
-    "secret"
+    "secret_pass"
   );
 
   await sleep(400);
@@ -574,7 +573,7 @@ async function typeText(input, text) {
 
     input.value += character;
 
-    await sleep(70);
+    await sleep(50);
   }
 }
 
