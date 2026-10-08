@@ -195,6 +195,7 @@ button {
   position: relative;
   z-index: 2;
   width: min(1200px, 90vw);
+  padding-top: 80px;
 }
 
 .eyebrow {
@@ -214,6 +215,9 @@ button {
   line-height: .78;
   letter-spacing: -.07em;
   font-weight: 800;
+
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .hero h1 span {
@@ -273,6 +277,10 @@ button {
   font-size: 9px;
   letter-spacing: .15em;
   color: var(--muted);
+
+  transition:
+    opacity .15s linear,
+    transform .15s linear;
 }
 
 .status-dot {

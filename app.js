@@ -60,6 +60,16 @@ window.addEventListener("scroll", () => {
     heroContent.style.opacity = `${1 - progress}`;
   }
 
+  const heroStatus = document.querySelector(".hero-status");
+
+  if (heroStatus) {
+    heroStatus.style.transform = `
+      translateY(${progress * 35}px)
+    `;
+
+    heroStatus.style.opacity = `${Math.max(0, 1 - progress * 2)}`;
+  }
+
   if (heroGrid) {
     heroGrid.style.transform = `
       perspective(800px)
