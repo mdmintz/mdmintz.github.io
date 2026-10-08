@@ -53,11 +53,11 @@ window.addEventListener("scroll", () => {
 
   if (heroContent) {
     heroContent.style.transform = `
-      translateY(${progress * -100}px)
-      scale(${1 - progress * .08})
+      translateY(${progress * -60}px)
+      scale(${1 - progress * .04})
     `;
 
-    heroContent.style.opacity = `${1 - progress * 1.4}`;
+    heroContent.style.opacity = `${1 - progress}`;
   }
 
   if (heroGrid) {

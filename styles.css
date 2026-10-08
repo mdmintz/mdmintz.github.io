@@ -308,12 +308,14 @@ button {
 }
 
 .intro {
-  min-height: 100vh;
+  min-height: 72vh;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 10vw;
+  gap: 7vw;
+
+  padding: 100px 0;
 }
 
 .section-number {
@@ -436,7 +438,7 @@ pre {
 
 .universe-section {
   position: relative;
-  height: 100vh;
+  height: 88vh;
 
   overflow: hidden;
 
@@ -634,8 +636,8 @@ pre {
 /* Missions */
 
 .missions {
-  padding-top: 180px;
-  padding-bottom: 180px;
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
 
 .missions-header {
@@ -776,8 +778,8 @@ pre {
 /* Demo */
 
 .demo {
-  padding-top: 160px;
-  padding-bottom: 180px;
+  padding-top: 120px;
+  padding-bottom: 130px;
 }
 
 .demo-header {
@@ -1026,7 +1028,7 @@ pre {
 /* About */
 
 .about {
-  min-height: 80vh;
+  min-height: 65vh;
 
   display: flex;
   align-items: center;
