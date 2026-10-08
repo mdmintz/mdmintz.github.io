@@ -403,23 +403,22 @@ document
   .querySelectorAll(".mission-card")
   .forEach((card) => {
 
-    card
-      .querySelector(".mission-open")
-      .addEventListener("click", () => {
+  const openButton = card.querySelector(".mission-open");
 
-        openMission(
-          card.dataset.example
-        );
+  // Skip cards without an open button.
+  if (!openButton) {
+    return;
+}
 
-      });
+openButton.addEventListener("click", () => {
+  openMission(card.dataset.example);
+});
 
-  });
+});
 
-
-modalClose.addEventListener(
-  "click",
-  closeMission
-);
+if (modalClose) {
+  modalClose.addEventListener("click", closeMission);
+}
 
 
 modal.addEventListener(
@@ -497,17 +496,17 @@ async function runAutomation() {
 
 
   // Step 1
-  activateLine(0);
+  activateLine(1);
   await sleep(500);
 
 
   // Step 2
-  activateLine(1);
+  activateLine(2);
   await sleep(700);
 
 
   // Step 3
-  activateLine(2);
+  activateLine(4);
 
   await typeText(
     username,
@@ -518,7 +517,7 @@ async function runAutomation() {
 
 
   // Step 4
-  activateLine(3);
+  activateLine(4);
 
   await typeText(
     password,
@@ -529,7 +528,7 @@ async function runAutomation() {
 
 
   // Step 5
-  activateLine(4);
+  activateLine(5);
 
   loginButton.style.transform =
     "scale(.96)";
@@ -543,7 +542,7 @@ async function runAutomation() {
 
 
   // Step 6
-  activateLine(5);
+  activateLine(6);
 
   await sleep(500);
 

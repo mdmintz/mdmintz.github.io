@@ -114,15 +114,14 @@
           <span class="terminal-title">login.py</span>
         </div>
 
-        <pre><code><span class="line-number">01</span> <span class="purple">from</span> seleniumbase <span class="purple">import</span> SB
-
+        <pre><code><span class="line-number">01</span> <span class="purple">from</span> seleniumbase <span class="purple">import</span> sb_cdp
 <span class="line-number">02</span>
-<span class="line-number">03</span> <span class="purple">with</span> SB() <span class="purple">as</span> sb:
-<span class="line-number">04</span>     sb.goto(<span class="green">"seleniumbase.io"</span>)
-<span class="line-number">05</span>     sb.type(<span class="green">"#username"</span>, <span class="green">"demo"</span>)
-<span class="line-number">06</span>     sb.type(<span class="green">"#password"</span>, <span class="green">"secret"</span>)
-<span class="line-number">07</span>     sb.click(<span class="green">"button"</span>)
-<span class="line-number">08</span>     sb.assert_text(<span class="green">"Welcome!"</span>)</code></pre>
+<span class="line-number">03</span> <span>sb</span> = <span>sb_cdp.Chrome()</span>:
+<span class="line-number">04</span> sb.goto(<span class="green_text">"seleniumbase.io/simple/login"</span>)
+<span class="line-number">05</span> sb.type(<span class="green_text">"#username"</span>, <span class="green_text">"demo_user"</span>)
+<span class="line-number">06</span> sb.type(<span class="green_text">"#password"</span>, <span class="green_text">"secret_pass"</span>)
+<span class="line-number">07</span> sb.click(<span class="green_text">'a:contains("Sign in")'</span>)
+<span class="line-number">08</span> sb.assert_text(<span class="green_text">"Welcome!"</span>)</code></pre>
 
       </div>
 
@@ -135,7 +134,7 @@
       <div class="universe-header">
         <div>
           <p class="eyebrow">02 / EXPLORE</p>
-          <h2>THE AUTOMATION<br /><span>UNIVERSE.</span></h2>
+          <h2><span>THE AUTOMATION</span><br /><span>UNIVERSE.</span></h2>
         </div>
 
         <p>
@@ -460,38 +459,46 @@
 
           <div class="code-lines">
 
+            <div class="code-line" data-step="-1">
+              <span>00</span>
+              <code>
+                <b>from</b> seleniumbase <b>import</b> sb_cdp
+              </code>
+            </div>
+
             <div class="code-line active" data-step="0">
               <span>01</span>
               <code>
-                <b>with</b> SB() <b>as</b> sb:
+                <!-- <b>with</b> SB() <b>as</b> sb: -->
+                sb = sb_cdp.Chrome()
               </code>
             </div>
 
             <div class="code-line" data-step="1">
               <span>02</span>
               <code>
-                sb.goto(<i>"simple/login"</i>)
+                sb.goto(<i>"seleniumbase.io/simple/login"</i>)
               </code>
             </div>
 
             <div class="code-line" data-step="2">
               <span>03</span>
               <code>
-                sb.type(<i>"#username"</i>, <i>"demo"</i>)
+                sb.type(<i>"#username"</i>, <i>"demo_user"</i>)
               </code>
             </div>
 
             <div class="code-line" data-step="3">
               <span>04</span>
               <code>
-                sb.type(<i>"#password"</i>, <i>"secret"</i>)
+                sb.type(<i>"#password"</i>, <i>"secret_pass"</i>)
               </code>
             </div>
 
             <div class="code-line" data-step="4">
               <span>05</span>
               <code>
-                sb.click(<i>"button"</i>)
+                sb.click(<i>'a:contains("Sign in")'</i>)
               </code>
             </div>
 
@@ -528,8 +535,8 @@
         <p class="eyebrow">SELENIUMBASE</p>
 
         <h2>
-          Automation should
-          <span>feel simple.</span>
+          Automation
+          <span>made simple.</span>
         </h2>
 
         <p>
