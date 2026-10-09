@@ -533,7 +533,7 @@ async function runAutomation() {
   // Step 2: Navigate — update the address and reveal the page
   activateLine(2);
   status.textContent = "NAVIGATING";
-  addressBar.textContent = "https://seleniumbase.io/simple/login";
+  addressBar.textContent = "seleniumbase.io/simple/login";
   await sleep(250);
   browserPage.classList.remove("is-loading");
   await sleep(450);
