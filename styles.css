@@ -377,6 +377,14 @@ button {
   border-bottom: 1px solid var(--line);
 }
 
+.terminal-header-demo {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 14px;
+}
+
 .terminal-dot {
   width: 8px;
   height: 8px;
@@ -731,7 +739,7 @@ pre {
 
 .demo-layout {
   display: grid;
-  grid-template-columns: 1.15fr .85fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 2px;
   background: var(--line);
 }
@@ -767,7 +775,7 @@ pre {
   padding: 6px 12px;
   background: #111;
   color: #666;
-  font: 9px monospace;
+  font: 12px monospace;
 }
 
 .browser-status {
@@ -779,12 +787,24 @@ pre {
   min-height: 470px;
   display: grid;
   place-items: center;
+  opacity: 1;
+  transition: opacity 0.35s ease;
   background:
     radial-gradient(
       circle at center,
       #171717,
       #090909
     );
+}
+
+.browser-page.is-loading {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .browser-page {
+    transition: none;
+  }
 }
 
 .demo-login {
@@ -864,11 +884,12 @@ pre {
   padding: 0 18px;
   border-bottom: 1px solid var(--line);
   color: var(--muted);
-  font: 10px monospace;
+  font: 12px monospace;
 }
 
 #execution-status {
   color: var(--green);
+  font-size: 12px;
 }
 
 .code-lines {

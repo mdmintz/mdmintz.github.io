@@ -381,11 +381,12 @@
         <div class="browser-window">
 
           <div class="browser-bar">
-            <div class="browser-dots">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
+
+              <div class="terminal-header-demo">
+                <span class="terminal-dot red"></span>
+                <span class="terminal-dot yellow"></span>
+                <span class="terminal-dot green"></span>
+              </div>
 
             <div class="address">
               https://seleniumbase.io/simple/login
@@ -440,7 +441,7 @@
         <div class="demo-code">
 
           <div class="code-header">
-            <span>automation.py</span>
+            <span>login.py</span>
             <span id="execution-status">
               READY
             </span>
@@ -455,14 +456,14 @@
               </code>
             </div>
 
-            <div class="code-line active" data-step="0">
+            <div class="code-line" data-step="0">
               <span>01</span>
               <code>
                 sb = sb_cdp.Chrome()
               </code>
             </div>
 
-            <div class="code-line" data-step="1">
+            <div class="code-line active" data-step="1">
               <span>02</span>
               <code>
                 sb.goto(<i>"https://seleniumbase.io/simple/login"</i>)

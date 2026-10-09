@@ -491,6 +491,11 @@ const status =
 const codeLines =
   document.querySelectorAll(".code-line");
 
+const browserPage =
+  document.querySelector(".browser-page");
+
+const addressBar =
+  document.querySelector(".address");
 
 function sleep(ms) {
   return new Promise(resolve => {
@@ -507,6 +512,8 @@ async function runAutomation() {
   password.value = "";
 
   success.classList.remove("visible");
+  browserPage.classList.remove("is-loading");
+  addressBar.textContent = "about:blank";
 
   status.textContent = "RUNNING";
 
@@ -516,18 +523,25 @@ async function runAutomation() {
   });
 
 
-  // Step 1
+  // Step 1: Open the browser — fade out the current page
   activateLine(1);
-  await sleep(500);
+  browserPage.classList.add("is-loading");
+  status.textContent = "OPENING BROWSER";
+  await sleep(450);
 
 
-  // Step 2
+  // Step 2: Navigate — update the address and reveal the page
   activateLine(2);
-  await sleep(700);
+  status.textContent = "NAVIGATING";
+  addressBar.textContent = "https://seleniumbase.io/simple/login";
+  await sleep(250);
+  browserPage.classList.remove("is-loading");
+  await sleep(450);
 
 
   // Step 3
   activateLine(3);
+  status.textContent = "TYPING";
 
   await typeText(
     username,
@@ -550,6 +564,7 @@ async function runAutomation() {
 
   // Step 5
   activateLine(5);
+  status.textContent = "CLICKING";
 
   loginButton.style.transform =
     "scale(.96)";
