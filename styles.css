@@ -110,7 +110,9 @@ button {
   align-items: center;
   gap: 10px;
 
-  font-size: 12px;
+  margin-left: 0px;
+
+  font-size: 14px;
   letter-spacing: .12em;
   font-weight: 700;
 }
@@ -119,13 +121,13 @@ button {
   display: grid;
   place-items: center;
 
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
 
   border: 1px solid currentColor;
   border-radius: 50%;
 
-  font-size: 9px;
+  font-size: 11px;
 }
 
 .logo span {
@@ -139,11 +141,15 @@ button {
 
 .nav nav a,
 .github-link {
-  font-size: 14px;
+  font-size: 12.5px;
   letter-spacing: .1em;
   text-transform: uppercase;
   opacity: .75;
   transition: opacity .3s ease;
+}
+
+.github-link {
+  font-size: 16px;
 }
 
 .nav nav a:hover,
@@ -213,7 +219,7 @@ button {
 .eyebrow {
   margin: 0 0 24px;
 
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: .18em;
   text-transform: uppercase;
 
@@ -223,7 +229,7 @@ button {
 .hero h1 {
   margin: 0;
 
-  font-size: clamp(70px, 13vw, 190px);
+  font-size: clamp(70px, 13vw, 170px);
   line-height: .78;
   letter-spacing: -.07em;
   font-weight: 800;
@@ -290,7 +296,7 @@ button {
   bottom: 35px;
   left: 4vw;
 
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: .15em;
   color: var(--muted);
 
@@ -302,8 +308,8 @@ button {
 .status-dot {
   display: inline-block;
 
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   margin-right: 7px;
 
   background: var(--green);
@@ -320,7 +326,7 @@ button {
   align-items: center;
   gap: 12px;
 
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: .15em;
   color: var(--muted);
 }
@@ -467,7 +473,7 @@ pre {
 .universe-section {
   position: relative;
   height: 78vh;
-  min-height: 600px;
+  min-height: 710px;
 
   overflow: hidden;
 
@@ -478,14 +484,16 @@ pre {
 .universe-header {
   position: absolute;
   top: 70px;
-  left: 5vw;
+  left: 20vw;
   right: 5vw;
 
   z-index: 10;
+  pointer-events: none;
 
   display: flex;
   justify-content: space-between;
 }
+
 
 .universe-header h2 {
   margin: 0;
@@ -503,7 +511,8 @@ pre {
 .universe-header > p {
   color: var(--muted);
   font-size: 12px;
-  line-height: 1.6;
+  margin-top: 180px;
+  line-height: 2.2;
   text-transform: uppercase;
   letter-spacing: .1em;
 }
@@ -642,7 +651,7 @@ pre {
 
   margin-top: 8px;
 
-  font-size: 9px;
+  font-size: 10px;
   color: var(--muted);
 }
 
@@ -733,17 +742,20 @@ pre {
   filter: blur(80px);
 
   transition: opacity .5s ease;
+
+  pointer-events: none;
 }
 
 .mission-card:hover::after {
   opacity: .12;
+  pointer-events: none;
 }
 
 .mission-top {
   display: flex;
   justify-content: space-between;
 
-  font: 9px monospace;
+  font: 11px monospace;
   color: var(--muted);
   letter-spacing: .1em;
 }
@@ -789,6 +801,7 @@ pre {
 
 .mission-open {
   position: absolute;
+  z-index: 2;
   bottom: 35px;
   right: 35px;
 
@@ -797,7 +810,7 @@ pre {
 
   color: var(--accent);
 
-  font: 10px monospace;
+  font: 12px monospace;
   letter-spacing: .1em;
 
   cursor: pointer;
@@ -1094,6 +1107,8 @@ pre {
 
   border: 1px solid var(--line);
   border-radius: 50%;
+
+  pointer-events: none;
 }
 
 .about-mark::before {
@@ -1104,6 +1119,7 @@ pre {
   inset: 25%;
   border-color: var(--accent);
   opacity: .4;
+  pointer-events: none;
 }
 
 .about-mark span {
@@ -1229,7 +1245,7 @@ footer {
 .modal-inner h2 {
   margin: 0;
 
-  font-size: 50px;
+  font-size: 36px;
   letter-spacing: -.05em;
 }
 
@@ -1243,6 +1259,10 @@ footer {
 
   border: 1px solid var(--line);
   background: #080808;
+}
+
+code {
+  font-size: 13px;
 }
 
 
@@ -1270,8 +1290,28 @@ footer {
     transform: none;
   }
 
+  .universe {
+    position: relative;
+    z-index: 2;
+  }
+
+  .node {
+    position: absolute;
+    z-index: 3;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
   .universe-header {
     display: block;
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .universe-header h2,
+  .universe-header p {
+    pointer-events: none;
   }
 
   .universe-header > p {
@@ -1347,5 +1387,6 @@ footer {
     scroll-behavior: auto !important;
     animation-duration: .01ms !important;
     transition-duration: .01ms !important;
+    pointer-events: none !important;
   }
 }

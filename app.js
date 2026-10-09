@@ -239,7 +239,7 @@ const examples = {
 
   login: {
     category: "MISSION 001 / BEGINNER",
-    title: "Automated Login",
+    title: "Automated Login Test",
 
     description:
       "A simple browser automation flow: navigate to a page, enter credentials, submit a form and verify the result.",
@@ -248,12 +248,10 @@ const examples = {
 `from seleniumbase import sb_cdp
 
 sb = sb_cdp.Chrome()
-sb.open("https://seleniumbase.io/simple/login")
-
+sb.goto("https://seleniumbase.io/simple/login")
 sb.type("#username", "demo_user")
 sb.type("#password", "secret_pass")
 sb.click('a:contains("Sign in")')
-
 sb.assert_text("Welcome!")`,
 
     source:
@@ -268,16 +266,12 @@ sb.assert_text("Welcome!")`,
       "Use SeleniumBase to navigate a page and extract useful information from rendered browser content.",
 
     code:
-`from seleniumbase import SB
+`from seleniumbase import sb_cdp
 
-with SB() as sb:
-    sb.open("https://example.com")
-
-    title = sb.get_title()
-    text = sb.get_text("body")
-
-    print(title)
-    print(text)`,
+sb = sb_cdp.Chrome()
+sb.goto("https://example.com")
+print(sb.get_title())
+print(sb.get_text("body"))`,
 
     source:
       "https://github.com/seleniumbase/SeleniumBase"
@@ -291,38 +285,39 @@ with SB() as sb:
       "Automate the kinds of interactions that make browser testing interesting: typing, clicking and manipulating UI elements.",
 
     code:
-`from seleniumbase import SB
+`from seleniumbase import sb_cdp
 
-with SB() as sb:
-    sb.open("https://example.com")
-
-    sb.click("#menu")
-    sb.type("#search", "seleniumbase")
-    sb.click("#submit")
-
-    sb.assert_element("#results")`,
+sb = sb_cdp.Chrome()
+sb.goto("https://seleniumbase.io/demo_page")
+sb.type("#myTextInput", "This is Automated")
+sb.click('button:contains("Click Me")')
+sb.click("#checkBox1")
+sb.drag_and_drop("img#logo", "div#drop2")
+sb.assert_element("div#drop2 img#logo")`,
 
     source:
       "https://github.com/seleniumbase/SeleniumBase"
   },
 
   cdp: {
-    category: "MISSION 004 / ADVANCED",
-    title: "Chrome DevTools",
+    category: "MISSION 004 / INTERMEDIATE",
+    title: "Bypassing a CAPTCHA",
 
     description:
-      "Explore SeleniumBase CDP Mode for direct interaction with Chrome DevTools Protocol capabilities.",
+      "Explore SeleniumBase CDP Mode for bypassing CAPTCHAs.",
 
     code:
-`from seleniumbase import SB
+`from seleniumbase import sb_cdp
 
-with SB(uc=True) as sb:
-    sb.open("https://example.com")
-
-    sb.cdp.click("#button")
-    sb.cdp.type("#search", "automation")
-
-    sb.cdp.get_text("body")`,
+sb = sb_cdp.Chrome()
+sb.goto("https://www.planetminecraft.com/account")
+sb.type('input[name="email"]', "test@example.com")
+sb.type('input[name="password"]', "Fake_Password")
+sb.click("input#autologin")  # The checkbox
+if sb.is_element_visible("input[disabled]"):
+    sb.solve_captcha()  # Enables the input button
+sb.assert_element_absent("input[disabled]")
+sb.sleep(1.5)`,
 
     source:
       "https://github.com/seleniumbase/SeleniumBase"
@@ -363,8 +358,8 @@ function openMission(name) {
 
   if (!example) return;
 
-  modalCategory.textContent =
-    example.category;
+  //modalCategory.textContent =
+  //  example.category;
 
   modalTitle.textContent =
     example.title;
@@ -385,6 +380,33 @@ function openMission(name) {
     "false"
   );
 }
+
+
+document.querySelectorAll(".node").forEach((node) => {
+  node.addEventListener("click", () => {
+    const category = node.dataset.category;
+
+    const missionMap = {
+      testing: "login",
+      scraping: "scraping",
+      interaction: "interaction",
+      cdp: "cdp"
+    };
+
+    if (category === "browser") {
+      document.querySelector("#missions")?.scrollIntoView({
+        behavior: "smooth"
+      });
+      return;
+    }
+
+    const mission = missionMap[category];
+
+    if (mission) {
+      openMission(mission);
+    }
+  });
+});
 
 
 function closeMission() {
