@@ -478,7 +478,7 @@ pre {
 .universe-section {
   position: relative;
   height: 78vh;
-  min-height: 710px;
+  min-height: 720px;
 
   overflow: hidden;
 
@@ -516,7 +516,7 @@ pre {
 .universe-header > p {
   color: var(--muted);
   font-size: 12px;
-  margin-top: 180px;
+  margin-top: 190px;
   line-height: 2.2;
   text-transform: uppercase;
   letter-spacing: .1em;
@@ -1325,11 +1325,6 @@ code {
 
   .universe-header > p {
     margin-top: 25px;
-  }
-
-  .universe-section {
-    height: 75vh;
-    min-height: 520px;
   }
 
   .node {
