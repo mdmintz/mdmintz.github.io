@@ -281,6 +281,7 @@ button {
 }
 
 .hero-button:hover,
+.secondary-button:hover,
 .primary-button:hover {
   background: var(--accent);
   color: white;
@@ -385,6 +386,10 @@ button {
 
   color: var(--muted);
   line-height: 1.7;
+}
+
+.intro-content p {
+  font-size: 17px;
 }
 
 .terminal {
@@ -641,7 +646,7 @@ pre {
 .node-label {
   display: block;
 
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: .12em;
 }
@@ -651,7 +656,7 @@ pre {
 
   margin-top: 8px;
 
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
 }
 
@@ -1171,8 +1176,12 @@ footer {
 
   color: var(--muted);
 
-  font: 9px monospace;
+  font: 12px monospace;
   letter-spacing: .12em;
+}
+
+footer a {
+  font: 16px monospace;
 }
 
 
