@@ -248,7 +248,7 @@ const examples = {
 `from seleniumbase import sb_cdp
 
 sb = sb_cdp.Chrome()
-sb.goto("https://seleniumbase.io/simple/login")
+sb.goto("seleniumbase.io/simple/login")
 sb.type("#username", "demo_user")
 sb.type("#password", "secret_pass")
 sb.click('a:contains("Sign in")')
@@ -288,7 +288,7 @@ print(sb.get_text("body"))`,
 `from seleniumbase import sb_cdp
 
 sb = sb_cdp.Chrome()
-sb.goto("https://seleniumbase.io/demo_page")
+sb.goto("seleniumbase.io/demo_page")
 sb.type("#myTextInput", "This is Automated")
 sb.click('button:contains("Click Me")')
 sb.click("#checkBox1")
